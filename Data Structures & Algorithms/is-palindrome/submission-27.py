@@ -1,0 +1,24 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = s.lower()
+        l,r = 0, len(s)-1
+        while  l < r:
+            while l < r and self.isordnum(s[l]) == False:
+                l+=1
+            while l<r and self.isordnum(s[r]) == False:
+                r-=1
+            if s[l] == s[r]:
+                r-=1
+                l+=1
+            else:
+                return False
+        return True
+    
+
+    def isordnum(self, c):
+        if ord('a') <= ord(c) <= ord('z'):
+            return True
+        elif ord('0') <= ord(c) <= ord('9'):
+            return True
+        else:
+            return False
